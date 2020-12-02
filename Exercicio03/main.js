@@ -1,9 +1,5 @@
 
 
-
-
-
-
 function calculo() {
 
     var num1 = parseInt(document.getElementById('num1').value);
