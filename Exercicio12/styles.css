@@ -5,7 +5,7 @@ H1{
 }
 body{
 
-    background-color: rgb(63, 55, 50);
+    background-color: rgb(31, 147, 206);
     padding:2rem;
 }
 
@@ -19,3 +19,82 @@ div.resultados{
     padding-left: 10rem;
     color: darkblue;
 }
+
+* {
+    font-family: "Courier New", Courier, monospace;
+    box-sizing: border-box;
+    border: none;
+    margin: 0;
+  }
+  
+  header#header {
+    background-color: deepskyblue;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  h1,
+  h4 {
+    margin: 0;
+  }
+  
+  main {
+    background-color: indigo;
+    padding: 10px;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  div.linha {
+    margin-bottom: 10px;
+  }
+  
+  input[type="number"] {
+    line-height: 2rem;
+    width: 100%;
+    padding-left: 10px;
+  }
+  
+  input[type="button"] {
+    line-height: 2rem;
+    background-color: deepskyblue;
+    color: #222;
+    font-weight: bold;
+  }
+  
+  input[type="button"]:disabled {
+    background-color: gray;
+  }
+  
+  div.acoes {
+    display: flex;
+    justify-content: right;
+  }
+  
+  hr {
+    border: 2px dashed deeppink;
+    width: 100%;
+    margin: 10px 0;
+  }
+  
+  div.resultado {
+    color: white;
+  }
+  
+  div.error p {
+    color: white;
+    font-size: 0.8rem;
+    margin: 5px 0;
+    padding: 10px, 0;
+    border-color: deeppink;
+  }
+  
+  @media only screen and (max-width: 340px) {
+    input[type="button"] {
+      flex: 1;
+    }
+  }
+  
