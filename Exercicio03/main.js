@@ -39,7 +39,7 @@ function validar(a, b) {
 
     } else {
 
-        erro = "1º valor invalido , ou valores negativo";
+        erro = "1º valor invalido(dese se maior que o segundo valor) , ou valores negativo";
 
         document.querySelector("div.mensagens").innerHTML = erro;
     }
@@ -65,10 +65,10 @@ const multiplicar = function (a, b) {
 
 
 function dividir(a, b) {
-    return a / b;
+    return (a / b).toFixed(2);
 }
 
 function resto(a, b) {
 
-    return a % b;
+    return (a % b).toFixed(2);
 }
