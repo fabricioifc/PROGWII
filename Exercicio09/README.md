@@ -14,9 +14,9 @@
 > Utilize as funções `map`, `filter` e `reduce`
 
 - Adicione mais um animal ao array, com a função `push`
-- Utilize a função `filter` para criar um novo array chamado cachorros e filtrar apenas os cachorros
+- Utilize a função `filter` para criar um novo array chamado cachorros e filtrar apenas os cachorros ok 
 - Utilize a função `map` para imprimir a idade real dos cachorros multiplicando a idade por 7
-- Utilize a função `reduce` para calcular a soma da idade de todos os animais
+- Utilize a função `reduce` para calcular a soma da idade de todos os animais ok
 
 
 > Veja como utilizar essas funções
