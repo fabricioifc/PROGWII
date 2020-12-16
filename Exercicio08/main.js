@@ -1,17 +1,21 @@
 
 
-const alunos = ['Roberto', 'Denilson', 'pedro']
+
+const alunos = ['Roberto', 'Denilson', 'Carlos']
 
 document.querySelector("div.resultados").innerHTML += alunos.sort();
 
 document.querySelector("div.resultados").innerHTML += "<hr />"
 
-alunos.push('ana');
+alunos.push('Juca');
 
-document.querySelector("div.resultados").innerHTML += alunos.sort();
+document.querySelector("div.resultados").innerHTML += "sort: " + alunos.sort();
 document.querySelector("div.resultados").innerHTML += "<hr />"
 
-document.querySelector("div.resultados").innerHTML += alunos.length;
+document.querySelector("div.resultados").innerHTML += 'Tamanho array = ' + alunos.length;
+document.querySelector("div.resultados").innerHTML += "<hr />"
+
+document.querySelector("div.resultados").innerHTML += '2º elemento = ' + alunos[1];
 document.querySelector("div.resultados").innerHTML += "<hr />"
 
 alunos.forEach(function (aluno) {

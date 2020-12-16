@@ -12,7 +12,7 @@
 
 1. Faça um programa que leia o seguinte array `const alunos = ['Roberto', 'Denilson', 'Carlos']` e imprima as seguintes informações no arquivo `index.html`:
   
-- Todos os elementos do array de maneira ordenada (utilize a função `sort`)
+- Todos os elementos do array de maneira ordenada (utilize a função `sort`) 
 - Adicione o seu nome no final do array com a função `push`
 - O tamanho do array com a função `length`
 - O segundo elemento do array
