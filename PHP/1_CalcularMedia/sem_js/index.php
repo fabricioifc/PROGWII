@@ -5,6 +5,10 @@ $nota2 = $_POST['nota2'];
 $acao = $_POST['calcular'];
 $resultado = null;
 
+// Formato brasileiro
+$nota1_f = str_replace(',','.',$nota1);
+$nota2_f = str_replace(',','.',$nota2);
+
 function validar($nota1, $nota2) {
     if (!is_numeric($nota1) || !is_numeric($nota2)) {
         return 'As notas não são válidas';
@@ -28,9 +32,9 @@ function verificarStatus($media) {
 
 // Quando clicar no botão
 if (isset($acao)) {
-    $erro = validar($nota1, $nota2);
+    $erro = validar($nota1_f, $nota2_f);
     if (!$erro) {   
-        $resultado = calcularMedia($nota1, $nota2);
+        $resultado = calcularMedia($nota1_f, $nota2_f);
         $status = verificarStatus($resultado);
     }
 }

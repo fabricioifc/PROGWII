@@ -7,18 +7,15 @@ function verificarStatus(media) {
   return "Em Exame";
 }
 
-function calcularMedia(form) {
-  let nota1 = parseFloat(form.nota1.value);
-  let nota2 = parseFloat(form.nota2.value);
-
-  return (nota1 + nota2) / 2;
+function calcularMedia(nota1, nota2) {
+  return (parseFloat(nota1) + parseFloat(nota2)) / 2;
 }
 
-function validar(form) {
-  if (form.nota1.value && form.nota2.value) {
-    return null;
+function validar(nota1, nota2) {
+  if (isNaN(nota1) || isNaN(nota2)) {
+    return "Informe notas válidas!";
   }
-  return "Informe notas válidas!";
+  return null;
 }
 
 const botao = document.querySelector("#formulario");
@@ -26,12 +23,15 @@ const botao = document.querySelector("#formulario");
 botao.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  let erro = validar(this);
+  let nota1 = this.nota1.value.replace(",", ".");
+  let nota2 = this.nota2.value.replace(",", ".");
+
+  let erro = validar(nota1, nota2);
 
   if (erro) {
     document.querySelector("div.mensagem").innerHTML = erro;
   } else {
-    let media = calcularMedia(this);
+    let media = calcularMedia(nota1, nota2);
     let status = verificarStatus(media);
     document.querySelector("#media").innerHTML = media;
     document.querySelector("#status").innerHTML = status;

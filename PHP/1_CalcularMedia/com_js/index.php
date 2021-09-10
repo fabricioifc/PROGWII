@@ -20,12 +20,10 @@
 
                 <form method="post" id="formulario">
                     <label for="nota1">Nota 1: </label>
-                    <input type="text" name="nota1" value="<?php echo $nota1; ?>" placeholder="Informe a primeira nota"
-                        autofocus required>
+                    <input type="text" name="nota1" placeholder="Informe a primeira nota" autofocus required>
 
                     <label for="nota2">Nota 2: </label>
-                    <input type="text" name="nota2" value="<?php echo $nota2; ?>" placeholder="Informe a segunda nota"
-                        required>
+                    <input type="text" name="nota2" placeholder="Informe a segunda nota" required>
 
                     <input type="submit" value="Calcular Média Simples" name="calcular">
                 </form>
