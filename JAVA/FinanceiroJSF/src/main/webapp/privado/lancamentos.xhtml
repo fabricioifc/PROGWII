@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "htth://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <f:view>
+        <h:head>
+            <title>Lançamentos</title>
+        </h:head>
+        <h:body>
+            <ui:composition template="/template/layout.xhtml">
+
+                <ui:define name="content">
+                    <div class="card">
+                        <div class="card-body">
+                            <h:form id="formulario">
+                                <h3>Receitas e Despesas</h3>
+                                <div class="row">
+                                    <div class="col">
+                                        <h:outputLabel for="dtlancamento" class="form-label" value="Data" />
+                                        <h:inputText value="#{lancamentoBean.lancamento.dtlancamento}" id="dtlancamento" class="form-control" 
+                                                     required="true" a:autofocus="true" >
+                                            <f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR" timeZone="America/Sao_Paulo" />
+                                        </h:inputText>
+                                    </div>
+                                    <div class="col">
+                                        <h:outputLabel for="nome" class="form-label" value="Descrição" />
+                                        <h:inputText value="#{lancamentoBean.lancamento.descricao}" id="nome" class="form-control" required="true" />
+                                    </div>
+                                    <div class="col">
+                                        <h:outputLabel for="preco_peq" class="form-label" value="valor" />
+                                        <h:inputText value="#{lancamentoBean.lancamento.valor}" id="preco_peq" label="Pequena (R$)" 
+                                                     class="form-control" required="true">
+                                            <f:validateDoubleRange minimum="0.1" />
+                                        </h:inputText>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-2">
+                                    <div class="col">
+                                        <h:selectOneRadio value="#{lancamentoBean.lancamento.tipo}" 
+                                                          required="true" id="tipo" label="Receita ou Despesa">
+                                            <f:selectItem itemLabel="Despesa" itemValue="Despesa" />
+                                            <f:selectItem itemLabel="Receita" itemValue="Receita" />
+                                        </h:selectOneRadio>
+                                    </div>
+                                </div>
+
+
+                                <div class="mt-3">
+                                    <div class="btn-group">
+                                        <h:commandButton actionListener="#{lancamentoBean.salvar()}"
+                                                         value="Salvar" 
+                                                         class="#{lancamentoBean.lancamento.id == null ? 'btn btn-primary' : 'btn btn-warning'}">
+                                            <f:ajax execute="@form :formularioLista" render="@form :formularioLista :avisos" /> 
+                                        </h:commandButton>
+                                        <h:commandButton actionListener="#{lancamentoBean.limparCampos()}" immediate="true"
+                                                         value="Cancelar" class="btn btn-default"
+                                                         rendered="#{lancamentoBean.lancamento.id != null}">
+                                            <f:ajax execute="@this" render="@form :formularioLista :avisos" /> 
+                                        </h:commandButton>
+                                    </div>
+                                </div>
+
+                            </h:form>
+
+                            <h:form id="formularioLista" class="mt-4">
+
+                                <h:dataTable var="obj" value="#{lancamentoBean.lancamentos}"
+                                             class="table table-sm table-striped">
+                                    <f:facet name="header">
+                                        <h:outputText value="Receitas e Despesas" />
+                                    </f:facet>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="ID" />
+                                        </f:facet>
+                                        <h:outputText value="#{obj.id}" />
+                                    </h:column>
+
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Data" />
+                                        </f:facet>
+                                        <h:outputText value="#{obj.dtlancamento}" />
+                                    </h:column>
+
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Descrição" />
+                                        </f:facet>
+                                        <h:outputText value="#{obj.descricao}" />
+                                    </h:column>
+
+                                    <h:column >
+                                        <f:facet name="header">
+                                            <h:outputText value="Tipo" />
+                                        </f:facet>
+                                        <h:outputText value="#{obj.tipo}" />
+                                    </h:column>
+
+                                    <h:column >
+                                        <f:facet name="header">
+                                            <h:outputText value="Valor" />
+                                        </f:facet>
+                                        <h:outputText value="#{obj.valor}" />
+                                    </h:column>
+
+
+                                    <h:column>
+                                        <f:facet name="header">
+                                            <h:outputText value="Ações" />
+                                        </f:facet>
+                                        <div class="btn-group">
+                                            <h:commandButton value="Alterar" action="#{lancamentoBean.prepararAlterar()}" class="btn btn-xs btn-warning">
+                                                <f:ajax execute=":formulario" render=":formulario :avisos" /> 
+                                                <f:setPropertyActionListener target="#{lancamentoBean.lancamento}" value="#{obj}" />
+                                            </h:commandButton>
+                                            <h:commandButton value="Excluir" action="#{lancamentoBean.remover}" 
+                                                             class="btn btn-xs btn-danger"
+                                                             onclick="return confirm('Tem certeza?')">
+                                                <f:ajax execute="@this" render="@form :avisos" /> 
+                                                <f:setPropertyActionListener target="#{lancamentoBean.lancamento}" value="#{obj}" />
+                                            </h:commandButton>
+                                        </div>
+                                    </h:column>
+                                </h:dataTable>
+                            </h:form>
+                        </div>
+                    </div>
+
+                </ui:define>
+            </ui:composition>
+        </h:body>
+        
+        <script type="text/javascript">
+            function formatarData(e) {
+                console.log(e);
+            }
+        </script>
+    </f:view>
+</html>
+
