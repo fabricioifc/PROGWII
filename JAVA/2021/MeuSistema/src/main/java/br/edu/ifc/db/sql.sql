@@ -15,4 +15,13 @@ create table usuarios (
     primary key(id)
 );
 
+drop table if exists contas;
+create table contas (
+    id integer not null auto_increment,
+    titulo varchar(255) not null unique,
+    saldo_inicial float not null default 0,
+    primary key(id)
+);
+
+
 select * from usuarios;
