@@ -26,17 +26,15 @@ public class LoginController implements Serializable {
 
     public String login() {
         try {
-            if (repository.validarUsuarioEmailSenha(email, senha)) {
-                HttpSession sessao = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-                Usuario usuario = new Usuario(email, senha);
-                sessao.setAttribute("usuarioLogado", usuario);
-                return "restrito/dashboard.xhtml";
-            }
-        } catch (SQLException ex) {
+            // IMPLEMENTAR
+//            return "restrito/dashboard.xhtml";
+            throw new UnsupportedOperationException("IMPLEMENTAR ESSE METODO.");
+        } catch (Exception ex) {
+            ex.printStackTrace();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("ERRO", "Erro ao efetuar login!"));
-
+            return null;
         }
-        return null;
+
     }
 
     public String logout() {
@@ -52,12 +50,9 @@ public class LoginController implements Serializable {
 
     public Usuario getUsuarioLogado() throws Exception {
         try {
-            HttpSession sessao = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-            Usuario logado = (Usuario) sessao.getAttribute("usuarioLogado");
-            if (logado == null) {
-                return null;
-            }
-            return logado;
+            // IMPLEMENTAR
+//            throw new UnsupportedOperationException("IMPLEMENTAR ESSE METODO.");
+            return null;
         } catch (Exception ex) {
             ex.printStackTrace();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("ERRO", "Erro ao efetuar login!"));

@@ -5,7 +5,6 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import model.Conta;
 import repository.CRUD;
@@ -38,6 +37,21 @@ public class ContaController implements Serializable {
 
     public String cancelar() {
         return "contas";
+    }
+
+    public String salvar() {
+        // IMPLEMENTAR
+        throw new UnsupportedOperationException("IMPLEMENTAR ESSE METODO.");
+    }
+
+    public String alterar() {
+        // IMPLEMENTAR
+        throw new UnsupportedOperationException("IMPLEMENTAR ESSE METODO.");
+    }
+
+    public String excluir() {
+        // IMPLEMENTAR
+        throw new UnsupportedOperationException("IMPLEMENTAR ESSE METODO.");
     }
 
 //    public String salvar() {
