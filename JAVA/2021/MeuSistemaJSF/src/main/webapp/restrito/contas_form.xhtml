@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <f:view>
+        <h:head>
+            <title>Contas</title>
+        </h:head>
+        <h:body>
+            <h:form id="form">
+                <h:messages />
+
+                <h:panelGrid columns="2" cellpadding="10" cellspacing="1" border="1">
+                    <f:facet name = "header">
+                        <h:outputText value="Cadastrar Conta"/>
+                    </f:facet>
+
+                    <h:outputLabel value="Título" />
+                    <h:inputText value="#{contaController.conta.titulo}" id="titulo" maxlength="40" />
+
+                    <h:outputLabel value="Saldo Inicial" />
+                    <h:inputText value="#{contaController.conta.saldoInicial}" id="saldo" />
+
+                    <f:facet name="footer">
+                        <h:panelGrid columns="2">
+                            <h:commandButton action="#{contaController.cancelar}" value="Cancelar" immediate="true" />
+                            <h:commandButton action="#{contaController.salvar}" value="Salvar" />
+                        </h:panelGrid>
+                    </f:facet>
+
+                </h:panelGrid>
+            </h:form>
+
+            <script>
+                window.onload = function () {
+                    document.getElementById('form:titulo').focus();
+                };
+            </script>
+        </h:body>
+    </f:view>
+</html>
+

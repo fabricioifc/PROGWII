@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Login</title>
+    </h:head>
+    <h:body style="padding-top: 60px;">
+        <ui:composition template="/template/layout.xhtml">
+
+            <ui:define name="content">
+                <h:form id="form">
+                    <h:messages />
+
+                    <h:link outcome="contas_form" value="Nova Conta" />
+
+                    <h:dataTable value="#{contaController.contas}" var="item" border="1" style="margin-top: 10px;">
+                        <f:facet name = "header">
+                            <h:outputText value="Contas"/>
+                        </f:facet>
+                        <h:column>    				
+                            <f:facet name = "header">#</f:facet>    				
+                            <h:commandLink value="#{item.id}" action="#{contaController.alterar}">
+                                <f:setPropertyActionListener value="#{item}" target="#{contaController.conta}" />
+                            </h:commandLink>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name = "header">Titulo</f:facet>
+                            <h:outputText value="#{item.titulo}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name = "header">Saldo Inicial</f:facet>
+                            <h:outputText value="#{item.saldoInicial}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Açoes</f:facet>
+                            <h:commandLink value="Excluir" action="#{contaController.excluir}">
+                                <f:setPropertyActionListener value="#{item}" target="#{contaController.conta}" />
+                            </h:commandLink>
+                        </h:column>
+
+                    </h:dataTable>
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
