@@ -13,9 +13,9 @@
 
             <ui:define name="content">
                 <h:form id="form">
-                    <h:messages />
+                    <h:messages showDetail="true" />
 
-                    <h:link outcome="contas_form" value="Nova Conta" />
+                    <h:commandLink action="#{contaController.nova()}" value="Nova Conta" />
 
                     <h:dataTable value="#{contaController.contas}" var="item" border="1" style="margin-top: 10px;">
                         <f:facet name = "header">

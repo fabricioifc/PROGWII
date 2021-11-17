@@ -10,22 +10,22 @@
         </h:head>
         <h:body>
             <h:form id="form">
-                <h:messages />
+                <h:messages showDetail="true" />
 
                 <h:panelGrid columns="2" cellpadding="10" cellspacing="1" border="1">
                     <f:facet name = "header">
                         <h:outputText value="Cadastrar Conta"/>
                     </f:facet>
-
+                    
                     <h:outputLabel value="Título" />
-                    <h:inputText value="#{contaController.conta.titulo}" id="titulo" maxlength="40" />
+                    <h:inputText value="#{contaController.conta.titulo}" id="titulo" maxlength="40" required="true" />
 
                     <h:outputLabel value="Saldo Inicial" />
-                    <h:inputText value="#{contaController.conta.saldoInicial}" id="saldo" />
+                    <h:inputText value="#{contaController.conta.saldoInicial}" id="saldo" required="true" />
 
                     <f:facet name="footer">
                         <h:panelGrid columns="2">
-                            <h:commandButton action="#{contaController.cancelar}" value="Cancelar" immediate="true" />
+                            <h:commandLink action="#{contaController.cancelar}" value="Cancelar" immediate="true" />
                             <h:commandButton action="#{contaController.salvar}" value="Salvar" />
                         </h:panelGrid>
                     </f:facet>

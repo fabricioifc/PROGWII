@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import model.Conta;
 
@@ -18,17 +19,60 @@ public class ContaRepository implements CRUD<Conta> {
 
     @Override
     public void inserir(Conta objeto) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conexao = null;
+        String sql = "insert into contas (titulo, saldo_inicial) values (?,?) ";
+        int i = 1;
+
+        try {
+            conexao = Conexao.getConnection();
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setString(i++, objeto.getTitulo());
+            ps.setDouble(i++, objeto.getSaldoInicial());
+            ps.execute();
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            conexao.close();
+        }
     }
 
     @Override
     public void atualizar(int pk, Conta objeto) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conexao = null;
+        String sql = "update contas set titulo = ?, saldo_inicial = ? "
+                + "where id = ?";
+
+        try {
+            conexao = Conexao.getConnection();
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setString(1, objeto.getTitulo());
+            ps.setDouble(2, objeto.getSaldoInicial());
+            ps.setInt(3, pk);
+
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            conexao.close();
+        }
     }
 
     @Override
     public void excluir(int pk) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conexao = null;
+        String sql = "delete from contas where id = ?";
+
+        try {
+            conexao = Conexao.getConnection();
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setInt(1, pk);
+
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            conexao.close();
+        }
     }
 
     @Override
@@ -42,7 +86,7 @@ public class ContaRepository implements CRUD<Conta> {
             PreparedStatement ps = conexao.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 contas.add(new Conta(rs.getInt("id"), rs.getString("titulo"), rs.getDouble("saldo_inicial")));
             }
 

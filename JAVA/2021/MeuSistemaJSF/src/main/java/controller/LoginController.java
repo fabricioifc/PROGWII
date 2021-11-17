@@ -27,8 +27,14 @@ public class LoginController implements Serializable {
     public String login() {
         try {
             // IMPLEMENTAR
-//            return "restrito/dashboard.xhtml";
-            throw new UnsupportedOperationException("IMPLEMENTAR ESSE METODO.");
+            boolean valido = repository.validarUsuarioEmailSenha(email, senha);
+            if (valido) {
+                return "restrito/dashboard.xhtml";
+            }
+            FacesContext.getCurrentInstance().addMessage(
+                    null,
+                    new FacesMessage("ERRO", "Usuário ou Senha Inválido!"));
+            return null;
         } catch (Exception ex) {
             ex.printStackTrace();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("ERRO", "Erro ao efetuar login!"));
