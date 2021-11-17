@@ -6,9 +6,11 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import model.Usuario;
 import repository.UsuarioRepository;
+import util.Mensagem;
 
 @ManagedBean(name = "login")
 @RequestScoped
@@ -29,12 +31,16 @@ public class LoginController implements Serializable {
             // IMPLEMENTAR
             boolean valido = repository.validarUsuarioEmailSenha(email, senha);
             if (valido) {
+                HttpSession sessao = (HttpSession) FacesContext.
+                        getCurrentInstance().getExternalContext().getSession(false);
+
+                sessao.setAttribute("usuarioLogado", email);
+                sessao.setMaxInactiveInterval(60 * 2);
                 return "restrito/dashboard.xhtml";
+            } else {
+                Mensagem.showError("Usuário ou Senha Inválido!");
+                return null;
             }
-            FacesContext.getCurrentInstance().addMessage(
-                    null,
-                    new FacesMessage("ERRO", "Usuário ou Senha Inválido!"));
-            return null;
         } catch (Exception ex) {
             ex.printStackTrace();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("ERRO", "Erro ao efetuar login!"));
