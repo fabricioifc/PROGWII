@@ -3,15 +3,13 @@ package controller;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import model.Conta;
+import model.Usuario;
 import repository.CRUD;
 import repository.ContaRepository;
 import util.Mensagem;
@@ -44,7 +42,7 @@ public class ContaController implements Serializable {
     public String cancelar() {
         return "contas";
     }
-    
+
     public String nova() {
         this.conta = new Conta();
         return "contas_form";
@@ -52,6 +50,14 @@ public class ContaController implements Serializable {
 
     public String salvar() {
         try {
+
+            HttpSession sessao
+                    = (HttpSession) FacesContext.getCurrentInstance().
+                            getExternalContext().getSession(false);
+            Usuario logado
+                    = (Usuario) sessao.getAttribute("usuarioLogado");
+            conta.setUsuario(logado);
+
             System.out.println("ID -> " + this.conta.getId());
             if (this.conta.getId() == null) {
                 repository.inserir(conta);

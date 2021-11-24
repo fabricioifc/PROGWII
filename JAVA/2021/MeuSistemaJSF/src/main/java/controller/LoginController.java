@@ -29,12 +29,12 @@ public class LoginController implements Serializable {
     public String login() {
         try {
             // IMPLEMENTAR
-            boolean valido = repository.validarUsuarioEmailSenha(email, senha);
-            if (valido) {
+            Usuario usuarioLogado = repository.validarUsuarioEmailSenha(email, senha);
+            if (usuarioLogado != null) {
                 HttpSession sessao = (HttpSession) FacesContext.
                         getCurrentInstance().getExternalContext().getSession(false);
 
-                sessao.setAttribute("usuarioLogado", email);
+                sessao.setAttribute("usuarioLogado", usuarioLogado);
                 sessao.setMaxInactiveInterval(60 * 2);
                 return "restrito/dashboard.xhtml";
             } else {
