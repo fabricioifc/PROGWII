@@ -13,6 +13,12 @@ public class Usuario {
     public Usuario() {
     }
 
+    public Usuario(Integer id, String email, String senha) {
+        this.id = id;
+        this.email = email;
+        this.senha = senha;
+    }
+    
     public Usuario(String email, String senha) {
         this.email = email;
         this.senha = senha;

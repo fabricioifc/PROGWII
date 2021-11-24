@@ -13,6 +13,7 @@ public class Conta {
     private Integer id;
     private String titulo;
     private Double saldoInicial;
+    private Usuario usuario;
 
     public Conta() {
     }
@@ -21,6 +22,14 @@ public class Conta {
         this.id = id;
         this.titulo = titulo;
         this.saldoInicial = saldoInicial;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public Integer getId() {
