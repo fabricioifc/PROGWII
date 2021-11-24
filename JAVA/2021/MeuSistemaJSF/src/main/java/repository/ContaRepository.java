@@ -20,14 +20,18 @@ public class ContaRepository implements CRUD<Conta> {
     @Override
     public void inserir(Conta objeto) throws SQLException {
         Connection conexao = null;
-        String sql = "insert into contas (titulo, saldo_inicial) values (?,?) ";
-        int i = 1;
-
+        String sql = "insert into contas "
+                + "(titulo, saldo_inicial, usuario_id) "
+                + "values (?,?,?) ";
         try {
             conexao = Conexao.getConnection();
             PreparedStatement ps = conexao.prepareStatement(sql);
-            ps.setString(i++, objeto.getTitulo());
-            ps.setDouble(i++, objeto.getSaldoInicial());
+            ps.setString(1, objeto.getTitulo());
+            ps.setDouble(2, objeto.getSaldoInicial());
+            
+            
+            ps.setInt(3, objeto.getUsuario().getId());
+            
             ps.execute();
         } catch (SQLException e) {
             throw e;
@@ -39,7 +43,7 @@ public class ContaRepository implements CRUD<Conta> {
     @Override
     public void atualizar(int pk, Conta objeto) throws SQLException {
         Connection conexao = null;
-        String sql = "update contas set titulo = ?, saldo_inicial = ? "
+        String sql = "update contas set titulo = ?, saldo_inicial = ?, usuario_id = ? "
                 + "where id = ?";
 
         try {
@@ -47,8 +51,9 @@ public class ContaRepository implements CRUD<Conta> {
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setString(1, objeto.getTitulo());
             ps.setDouble(2, objeto.getSaldoInicial());
-            ps.setInt(3, pk);
-
+            ps.setInt(3, objeto.getUsuario().getId());
+                    
+            ps.setInt(4, pk);
             ps.executeUpdate();
         } catch (SQLException e) {
             throw e;

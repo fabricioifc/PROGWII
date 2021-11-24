@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import model.Usuario;
 
 /**
  *
@@ -12,7 +13,7 @@ import java.sql.SQLException;
  */
 public class UsuarioRepository {
 
-    public boolean validarUsuarioEmailSenha(String email, String senha) throws SQLException {
+    public Usuario validarUsuarioEmailSenha(String email, String senha) throws SQLException {
 //        throw new UnsupportedOperationException("Implemente esse método");
         Connection conexao = null;
         String sql = "select * from usuarios where email = ? and senha = ?";
@@ -25,10 +26,14 @@ public class UsuarioRepository {
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                return true;
+                return new Usuario(
+                        rs.getInt("id"),
+                        rs.getString("email"),
+                        null
+                );
             }
 
-            return false;
+            return null;
         } catch (SQLException e) {
             throw e;
         } finally {
