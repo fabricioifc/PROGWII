@@ -11,5 +11,3 @@
 
 <body>
 
-    <?php require_once './_partials/_navbar.php' ?>
-
