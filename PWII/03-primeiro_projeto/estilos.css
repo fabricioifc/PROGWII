@@ -1,0 +1,48 @@
+body {
+    /* background-color: #f8f8f8; */
+    background-color: #0A337F;
+}
+
+.container {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h2 {
+    margin: 0 auto;
+    text-align: center;
+    color: #EBF2FD;
+    padding: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 8px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #1258DC;
+    border: none;
+    color: #EBF2FD;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-size: 16px; /*1rem => 16px*/
+}
+
+div.resultado {
+    color: #EBF2FD;
+    font-size: 1rem;
+}
+
+.mensagem {
+    color: red;
+}

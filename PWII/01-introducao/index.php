@@ -1,15 +1,14 @@
 <!-- 
     1. Instalar e configurar:
         - PHP, 
-        - VSCODE (PHP Intelephense, PHP Server)
+        - VSCODE (PHP Intelephense)
         - testar na linha de comando e no navegador
+        - rodar no git bash (php -S localhost:8000)
 
 -->
 
 <?php
 // Saída
-
-use function PHPSTORM_META\type;
 
     echo "Olá Mundo!\n";
     echo 'Olá Mundo!\n';
