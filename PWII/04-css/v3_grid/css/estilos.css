@@ -1,0 +1,123 @@
+/*  */
+
+.container {
+    width: 1140px;
+    display: block;
+    margin: 0 auto;
+}
+
+header {
+    background-color: burlywood;
+    /* evitar a margem acima*/
+    float: left; 
+    width: 100%;
+    display: block;
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+header nav ul li {
+    /* display: inline-block; */
+    padding: 30px;
+}
+
+header nav ul li a {
+    /* display: inline; */
+    background-color: brown;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    
+}
+
+section {
+    background-color: lightgreen;
+    float: left;
+    width: 100%;
+    display: block;
+    /* padding: 10px 15px; */
+}
+
+.col-1 {
+    width: 62px;
+    display: block;
+    float: left;
+    margin-right: 36px; /*GUTTER*/
+}
+.col-2 {
+    width: 160px;
+    display: block;
+    float: left;
+    margin-right: 36px; /*GUTTER*/
+}
+.col-3 {
+    width: 258px;
+    display: block;
+    float: left;
+    margin-right: 36px; /*GUTTER*/
+}
+.col-4 {
+    width: 356px;
+    display: block;
+    float: left;
+    margin-right: 36px; /*GUTTER*/
+}
+.col-5 {
+    width: 454px;
+    display: block;
+    float: left;
+    margin-right: 36px; /*GUTTER*/
+}
+.col-6 {
+    width: 552px;
+    display: block;
+    float: left;
+    margin-right: 36px; /*GUTTER*/
+}
+.col-7 {
+    width: 650px;
+    display: block;
+    float: left;
+    margin-right: 36px; /*GUTTER*/
+}
+.col-8 {
+    width: 748px;
+    display: block;
+    float: left;
+    margin-right: 36px; /*GUTTER*/
+}
+.col-9 {
+    width: 846px;
+    display: block;
+    float: left;
+    margin-right: 36px; /*GUTTER*/
+}
+.col-10 {
+    width: 944px;
+    display: block;
+    float: left;
+    margin-right: 36px; /*GUTTER*/
+}
+.col-11 {
+    width: 1042px;
+    display: block;
+    float: left;
+    margin-right: 36px; /*GUTTER*/
+}
+.col-12 {
+    width: 1140px;
+    display: block;
+    float: left;
+    /* margin-right: 36px; GUTTER*/
+}
+/* Utilizar essa classe no último bloco de cada container */
+.ultimo-bloco {
+    margin-right: 0 !important;
+}
