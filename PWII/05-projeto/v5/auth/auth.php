@@ -12,6 +12,7 @@
     // unset($_SESSION['flash-success']);
     // unset($_SESSION['flash-error']);
 
+    require_once '../utils/FlashMessages.php';
 
     // session_destroy();
     session_start();
@@ -19,7 +20,10 @@
     $user_email = $_SESSION['user-email'] ?? null;
     // echo $usuarioLogado;
     if (!$user_email) {
-        $_SESSION['flash-error'] = 'Você não tem permissão para acessar essa página. Por favor, faça login.';
+        FlashMessages::setMessage(
+            FlashMessages::ERROR, 
+            'Você não tem permissão para acessar essa página. Por favor, faça login.'
+        );
         header("Location: ../pages/login.php");
         exit; // precisa para não executar o que tiver abaixo disso
     }

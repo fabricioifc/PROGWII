@@ -4,7 +4,7 @@
     
 <main>
     <div class="container">
-        <?php include_once './partials/_flash.php' ?>
+        <?php // require_once './partials/_flash.php' ?>
 
         <h1>Meu primeiro site com PHP e Bootstrap.</h1>
     </div>

@@ -1,4 +1,4 @@
-<?php require '../auth/auth.php' ?>
+<?php require_once '../auth/auth.php' ?>
 <?php
 
     // // session_destroy();
@@ -19,7 +19,7 @@
     
 <main>
     <div class="container">
-        <?php include '../partials/_flash.php' ?>
+        <?php require_once '../partials/_flash.php' ?>
 
         <h1>Inicio - Página Inicial</h1>
     </div>

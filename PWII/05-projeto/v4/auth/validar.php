@@ -2,13 +2,26 @@
 
 session_start();
 
+function criptografar($senha) {
+    // Criptografia com bcrypt
+    $options['salt'] = 'asmd9asd9amd0asmd07b82'; // precisa de 22 caracteres
+    // SALT: se não informado, bcrypt gera randomicamente
+    return password_hash($senha, PASSWORD_BCRYPT, $options);
+}
+
 $user_email = 'teste@teste.com';
-$user_senha = '123456';
-
 $email = $_REQUEST['email'];
-$senha = $_REQUEST['senha'];
 
-$valido = ($user_email == $email && $user_senha = $senha);
+// $user_senha = '123456';
+$user_senha = criptografar('123456');
+$senha = criptografar($_REQUEST['senha']);
+
+// print_r($user_senha);
+// echo '<br />';
+// print_r($senha);
+// exit;
+
+$valido = ($user_email == $email && $user_senha == $senha);
 // var_dump($valido);
 
 if ($valido) {

@@ -6,8 +6,8 @@ setcookie('username', 'pikachu', time() + 10); //Expira em 10 segundos
 ?>
 
 <?php require '../auth/auth.php' ?>
-<?php require_once '../partials/_header.php' ?>
-<?php require_once '../partials/_navbar.php' ?>
+<?php require_once '../_partials/_header.php' ?>
+<?php require_once '../_partials/_navbar.php' ?>
 
 <main>
     <div class="container">
@@ -20,4 +20,4 @@ setcookie('username', 'pikachu', time() + 10); //Expira em 10 segundos
     </div>
 </main>
 
-<?php  require_once '../partials/_footer.php' ?>
+<?php  require_once '../_partials/_footer.php' ?>
