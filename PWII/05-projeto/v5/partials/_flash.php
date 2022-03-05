@@ -1,6 +1,6 @@
 <?php 
 
-    require_once '../utils/FlashMessages.php';
+    require_once './utils/FlashMessages.php';
     session_start();
 
 

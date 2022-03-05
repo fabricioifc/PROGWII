@@ -19,7 +19,7 @@ if ($user->isValido()) {
     // $_SESSION[FlashMessages::SUCCESS] = $flash_success;
     FlashMessages::setMessage(FlashMessages::SUCCESS, $flash_success);
 
-    header("Location: ../pages/home.php");
+    header("Location: ../home.php");
 } else {
     $flash_error = "Usuário ou Senha Inválido!";
     // header("Location: ../pages/login.php?flash-error=$flash_error");
@@ -27,7 +27,7 @@ if ($user->isValido()) {
     unset($_SESSION['user-email']);
     $_SESSION[FlashMessages::ERROR] = $flash_error;
 
-    header("Location: ../pages/login.php");
+    header("Location: ../login.php");
 }
 
 ?>

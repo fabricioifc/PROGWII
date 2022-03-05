@@ -12,18 +12,22 @@
     // unset($_SESSION['flash-success']);
     // unset($_SESSION['flash-error']);
 
-    require_once '../utils/FlashMessages.php';
+    require_once './utils/FlashMessages.php';
 
     // session_destroy();
     session_start();
 
     $user_email = $_SESSION['user-email'] ?? null;
+    $permitidas = ['/','/index.php', '/login.php'];
+
+    $acesso_permitido = $user_email || in_array($_SERVER['REQUEST_URI'], $permitidas);
+
     // echo $usuarioLogado;
-    if (!$user_email) {
+    if (!$acesso_permitido) {
         FlashMessages::setMessage(
             FlashMessages::ERROR, 
             'Você não tem permissão para acessar essa página. Por favor, faça login.'
         );
-        header("Location: ../pages/login.php");
+        header("Location: ../login.php");
         exit; // precisa para não executar o que tiver abaixo disso
     }
