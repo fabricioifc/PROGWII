@@ -1,7 +1,6 @@
 <?php 
 
     require_once './utils/FlashMessages.php';
-    session_start();
 
 
     echo FlashMessages::getMessage(FlashMessages::SUCCESS);
