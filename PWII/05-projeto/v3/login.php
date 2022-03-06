@@ -1,12 +1,12 @@
-<?php //require '../auth/auth.php' ?>
-<?php require_once '../partials/_header.php' ?>
-<?php require_once '../partials/_navbar.php' ?>
+<?php require_once './auth/auth.php' ?>
+<?php require_once './partials/_header.php' ?>
+<?php require_once './partials/_navbar.php' ?>
     
 <main>
     <div class="container">
-        <?php include_once '../partials/_flash.php' ?>
+        <?php require_once './partials/_flash.php' ?>
 
-        <form action="../auth/validar.php">
+        <form action="./auth/validar.php">
             <div class="row">
                 <div class="col">
                     <div class="mb-3">
@@ -27,4 +27,4 @@
     </div>
 </main>
 
-<?php  require_once '../partials/_footer.php' ?>
+<?php  require_once './partials/_footer.php' ?>

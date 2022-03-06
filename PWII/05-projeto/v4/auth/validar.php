@@ -26,20 +26,20 @@ $valido = ($user_email == $email && $user_senha == $senha);
 
 if ($valido) {
     $flash_success = "Seja bem vindo, $email!";
-    // header("Location: ../pages/home.php?flash-success=$flash_success");
+    // header("Location: ../home.php?flash-success=$flash_success");
     
     $_SESSION['user-email'] = $email;
     $_SESSION['flash-success'] = $flash_success;
 
-    header("Location: ../pages/home.php");
+    header("Location: ../home.php");
 } else {
     $flash_error = "Usuário ou Senha Inválido!";
-    // header("Location: ../pages/login.php?flash-error=$flash_error");
+    // header("Location: ../login.php?flash-error=$flash_error");
 
     unset($_SESSION['user-email']);
     $_SESSION['flash-error'] = $flash_error;
 
-    header("Location: ../pages/login.php");
+    header("Location: ../login.php");
 }
 
 ?>

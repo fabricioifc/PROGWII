@@ -1,10 +1,3 @@
-<?php
-
-    session_start();
-
-    $user_email = $_SESSION['user-email'];
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +20,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../pages/home.php">Home</a>
+                            <a class="nav-link active" aria-current="page" href="home.php">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Link</a>
@@ -35,22 +28,9 @@
                     </ul>
 
                     <ul class="navbar-nav ms-auto">
-                        <?php if (isset($user_email)) { ?>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">
-                                    <?= $user_email ?>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link danger" aria-current="page" href="../auth/logout.php">
-                                    Sair
-                                </a>
-                            </li>
-                        <?php } else { ?>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="../pages/login.php">Login</a>
-                            </li>
-                        <?php }  ?>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="login.php">Login</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -59,22 +39,6 @@
     
     <main>
         <div class="container">
-
-            <?php // if (isset($_REQUEST['flash-success'])) {?>
-            <?php if (isset($_SESSION['flash-success'])) {?>
-                <div class="alert alert-success">
-                    <?= $_SESSION['flash-success'] ?>
-                    <?php unset($_SESSION['flash-success']) ?>
-                </div>
-            <?php } ?>
-            <?php // if (isset($_REQUEST['flash-error'])) {?>
-            <?php if (isset($_SESSION['flash-error'])) {?>
-                <div class="alert alert-danger">
-                    <?= $_SESSION['flash-error'] ?>
-                    <?php unset($_SESSION['flash-error']) ?>
-                </div>
-            <?php } ?>
-
            <h1>Inicio - Página Inicial</h1>
         </div>
     </main>

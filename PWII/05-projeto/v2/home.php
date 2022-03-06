@@ -1,8 +1,12 @@
 <?php
-
     session_start();
 
-    $user_email = $_SESSION['user-email'];
+    $user_email = $_SESSION['user-email'] ?? null;
+    // echo $user_email;
+
+    // if (!$user_email) {
+    //     header('Location: index.php?flash-error=Você não tem permissão para acessar essa página.');
+    // }
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +24,7 @@
     <section>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-            <a class="navbar-brand" href="./index.php">Pizzaaaaa</a>
+            <a class="navbar-brand" href="../index.php">Pizzaaaaa</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -74,10 +78,10 @@
                     <?php unset($_SESSION['flash-error']) ?>
                 </div>
             <?php } ?>
-           <h1>Meu primeiro site com PHP e Bootstrap.</h1>
+
+           <h1>Inicio - Página Inicial</h1>
         </div>
     </main>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

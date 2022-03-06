@@ -20,6 +20,6 @@
     // echo $usuarioLogado;
     if (!$user_email) {
         $_SESSION['flash-error'] = 'Você não tem permissão para acessar essa página. Por favor, faça login.';
-        header("Location: ../pages/login.php");
+        header("Location: ../login.php");
         exit; // precisa para não executar o que tiver abaixo disso
     }

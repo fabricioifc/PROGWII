@@ -6,14 +6,14 @@ $user_senha = '123456';
 $email = $_REQUEST['email'];
 $senha = $_REQUEST['senha'];
 
-$valido = ($user_email == $email && $user_senha = $senha);
+$valido = ($user_email == $email && $user_senha == $senha);
 
 // var_dump($valido);
 
 if ($valido) {
-    header('Location: ../pages/home.php');
+    header('Location: ../home.php');
 } else {
-    header('Location: ../pages/login.php');
+    header('Location: ../login.php');
 }
 
 ?>
