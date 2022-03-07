@@ -15,8 +15,8 @@ class User {
 
     public function __construct($email, $senha) {
         $this->email = $email;
-        $this->senha = $senha;
-        // $this->setSenha($senha);
+        // $this->senha = $senha;
+        $this->setSenha($senha);
     }
 
     public function getEmail() {

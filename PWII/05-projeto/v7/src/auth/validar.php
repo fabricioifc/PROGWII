@@ -20,6 +20,7 @@ $user = new User($_REQUEST['email'], $_REQUEST['senha']);
 // exit;
 
 $dao = new UserDao();
+// $dao->salvar($user);
 
 if ($dao->isValido($user)) {
     $flash_success = "Seja bem vindo, {$user->getEmail()}";

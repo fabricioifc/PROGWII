@@ -26,4 +26,18 @@ class UserDao implements IUserDao {
             return false;
         }
     }
+
+    public function salvar($user) {
+        $db = Database::getConnection();
+        
+        $stmt = $db->prepare("INSERT INTO users (email, senha) values (:email, :senha)");
+
+        $stmt->execute(array(
+            ':email' => $user->getEmail(),
+            ':senha' => $user->getsenha()
+        ));
+
+        return $stmt->rowCount();
+    }
+
 }
